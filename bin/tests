@@ -1,0 +1,5 @@
+#!/bin/bash
+
+TEST_ARGS="${@:-tests/}"
+
+docker-compose -f docker-compose.tests.yml -p redash-tests  run -e TEST_ARGS=$TEST_ARGS --rm tests

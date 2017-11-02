@@ -39,7 +39,7 @@ help() {
 }
 
 tests() {
-  export REDASH_DATABASE_URL="postgresql://postgres@postgres/tests"
+  # export REDASH_DATABASE_URL="postgresql://postgres@postgres/tests"
   exec make test
 }
 
