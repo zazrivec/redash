@@ -27,8 +27,8 @@ deployment:
     commands:
       - bin/pack
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-      - docker build -t redash/redash:$(./manage.py version | sed -e "s/\+/./") .
-      - docker push redash/redash:$(./manage.py version | sed -e "s/\+/./")
+      - docker build -t zazrivec/redash:$(./manage.py version | sed -e "s/\+/./") .
+      - docker push zazrivec/redash:$(./manage.py version | sed -e "s/\+/./")
 general:
   branches:
     ignore:
