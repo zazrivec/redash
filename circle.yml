@@ -18,12 +18,8 @@ test:
   override:
     - pytest --junitxml=$CIRCLE_TEST_REPORTS/junit.xml tests/
 deployment:
-  tarball:
-    branch: [master, /release.*/]
-    commands:
-      - bin/pack
   hub:
-    tag: /v[0-9]+(\.[0-9\-a-z]+)*/
+    branch: master
     commands:
       - bin/pack
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
