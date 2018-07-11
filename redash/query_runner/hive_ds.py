@@ -38,30 +38,21 @@ class Hive(BaseSQLQueryRunner):
     noop_query = "SELECT 1"
 
     @classmethod
-    def name(cls):
-        return "Hive via PyHive"
-
-    @classmethod
     def configuration_schema(cls):
         return {
             "type": "object",
             "properties": {
                 "host": {
-                    "type": "string",
-                    "title": "Host: The hostname for the Hive Metastore."
+                    "type": "string"
                 },
                 "port": {
-                    "type": "number",
-                    "default": 10000,
-                    "title": "Port: Hive default is 10000."
+                    "type": "number"
                 },
                 "database": {
-                    "type": "string",
-                    "title": "Default Database: The default database name."
+                    "type": "string"
                 },
                 "username": {
-                    "type": "string",
-                    "title": "Username: The username used for connection."
+                    "type": "string"
                 },
                 "auth": {
                     "type": "string",
@@ -72,11 +63,9 @@ class Hive(BaseSQLQueryRunner):
                     "title": "Kerberos Service Name: Use with `auth='KERBEROS'` only."
                 },
                 "password": {
-                    "type": "string",
-                    "title": "Password: Use with `auth='LDAP'` only."
+                    "type": "string"
                 }
             },
-            "order": ["host","port","database","username","auth","kerberos_service_name","password"],
             "required": ["host"],
             "secret": ["password"]
         }
