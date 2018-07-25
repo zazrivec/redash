@@ -38,27 +38,27 @@ class TestGuessType(TestCase):
 class TestValueEvalList(TestCase):
     def test_handles_unicode(self):
         values = [u'יוניקוד', 'test', 'value']
-        self.assertEqual(values, _value_eval_list(values))
+        self.assertEqual(values, _value_eval_list(values, [TYPE_STRING]*len(values)))
 
     def test_handles_boolean(self):
         values = ['true', 'false', 'True', 'False', 'TRUE', 'FALSE']
         converted_values = [True, False, True, False, True, False]
-        self.assertEqual(converted_values, _value_eval_list(values))
+        self.assertEqual(converted_values, _value_eval_list(values, [TYPE_BOOLEAN]*len(values)))
 
     def test_handles_empty_values(self):
         values = ['', None]
         converted_values = [None, None]
-        self.assertEqual(converted_values, _value_eval_list(values))
+        self.assertEqual(converted_values, _value_eval_list(values, [TYPE_STRING, TYPE_STRING]))
 
     def test_handles_float(self):
         values = ['3.14', '-273.15']
         converted_values = [3.14, -273.15]
-        self.assertEqual(converted_values, _value_eval_list(values))
+        self.assertEqual(converted_values, _value_eval_list(values, [TYPE_FLOAT, TYPE_FLOAT]))
 
     def test_handles_datetime(self):
         values = ['2018-06-28', '2020-2-29']
         converted_values = [datetime.datetime(2018, 6, 28, 0, 0), datetime.datetime(2020, 2, 29, 0, 0)]
-        self.assertEqual(converted_values, _value_eval_list(values))
+        self.assertEqual(converted_values, _value_eval_list(values, [TYPE_DATETIME, TYPE_DATETIME]))
 
 
 class TestParseSpreadsheet(TestCase):
